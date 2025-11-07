@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearchRabbit - 开启你的科研探索之旅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #50E3C2;
+            --dark-blue: #0A2540;
+            --light-gray: #f6f9fc;
+            --text-color: #333;
+            --font-main: 'Noto Sans SC', 'Lato', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            margin: 0;
+            color: var(--text-color);
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* --- 1. 顶部英雄区 --- */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #2a578a 100%);
+            color: white;
+            padding: 100px 0 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--dark-blue);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(80, 227, 194, 0.3);
+        }
+
+        /* --- 2. 通用区块样式 --- */
+        .section {
+            padding: 80px 0;
+        }
+        .section.light-bg {
+            background-color: var(--light-gray);
+        }
+        .section-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.5em;
+            color: var(--dark-blue);
+            margin-bottom: 60px;
+        }
+
+        /* --- 3. 产品插画展示区 --- */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+        .illustration-wrapper {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 40, 100, 0.1);
+            padding: 20px;
+            overflow: hidden;
+        }
+        .showcase-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2em;
+            color: var(--dark-blue);
+            margin-top: 0;
+        }
+        .showcase-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .feature-list li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-size: 1.5em;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        /* --- 4. 应用情景区 --- */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .scenario-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .scenario-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        .scenario-icon {
+            font-size: 3.5em;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .scenario-card h3 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1.5em;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+        .scenario-card p {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #555;
+            margin-top: 0;
+        }
+        .scenario-card .challenge {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* --- 5. 操作指南区 --- */
+        .workflow-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 40px;
+        }
+        .workflow-timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            border-radius: 2px;
+            z-index: 1;
+        }
+        .workflow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border: 4px solid;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            margin: 0 auto 20px auto;
+        }
+        .step-1 .step-icon { border-color: var(--secondary-color); }
+        .step-2 .step-icon { border-color: #4CC7D4; }
+        .step-3 .step-icon { border-color: #4BADC8; }
+        .step-4 .step-icon { border-color: var(--primary-color); }
+        .workflow-step h4 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1.3em;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+        .workflow-step p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            padding: 0 10px;
+        }
+
+        /* --- 6. SVG 动画 --- */
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        .svg-node-animated {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* --- 7. 响应式设计 --- */
+        @media (max-width: 900px) {
+            .showcase-grid { grid-template-columns: 1fr; }
+            .showcase-grid .illustration-wrapper { order: -1; }
+            .hero h1 { font-size: 2.5em; }
+            .workflow-timeline { flex-direction: column; align-items: center; gap: 40px; }
+            .workflow-timeline::before { display: none; }
+        }
+        
+        /* --- 8. 页脚 --- */
+        .footer {
+            background-color: var(--dark-blue);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        .footer h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================= 1. 顶部英雄区 ======================= -->
+    <header class="hero">
+        <div class="container">
+            <h1>跟随你的好奇心<br>进入知识的<span>兔子洞</span></h1>
+            <p>告别繁琐的关键词搜索。ResearchRabbit 是您的私人AI科研助理，将文献调研从枯燥的任务，变为一场充满惊喜的探索之旅。</p>
+            <a href="https://app.researchrabbit.ai/" target="_blank" rel="noopener noreferrer" class="cta-button">立即免费开始探索</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ======================= 2. 从简洁开始 ======================= -->
+        <section class="section">
+            <div class="container">
+                <div class="showcase-grid">
+                    <div class="showcase-content">
+                        <h3>一切始于一个简单的起点</h3>
+                        <p>无需复杂的指令。从一篇你熟悉的论文、一个关键词或DOI开始，即可开启整个领域的知识探索。</p>
+                        <ul class="feature-list">
+                            <li>直观的仪表盘，快速访问项目</li>
+                            <li>一键导入Zotero，无缝衔接工作流</li>
+                            <li>智能追踪最新动态，不再错过前沿进展</li>
+                        </ul>
+                    </div>
+                    <div class="illustration-wrapper">
+                        <!-- SVG 插画 1: 仪表盘 -->
+                        <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgb(230,245,255);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(240,255,250);stop-opacity:1" /></linearGradient></defs><rect x="10" y="10" width="480" height="330" rx="15" fill="url(#grad1)" /><rect x="30" y="30" width="440" height="60" rx="30" fill="#ffffff" stroke="#e0e0e0"/><circle cx="60" cy="60" r="12" fill="none" stroke="#b0b0b0" stroke-width="2.5"/><line x1="68" y1="68" x2="75" y2="75" stroke="#b0b0b0" stroke-width="2.5" stroke-linecap="round"/><text x="90" y="65" font-family="var(--font-main)" font-size="14" fill="#999">标题、DOI或关键字...</text><rect x="370" y="42" width="80" height="36" rx="18" fill="var(--dark-blue)"/><text x="410" y="65" font-family="var(--font-main)" font-size="14" fill="white" text-anchor="middle">搜索</text><g id="left-panel"><text x="30" y="130" font-family="var(--font-heading)" font-weight="600" font-size="16" fill="var(--dark-blue)">最近保存的</text><rect x="30" y="150" width="200" height="8" rx="4" fill="#e0e8f0"/><rect x="30" y="170" width="180" height="8" rx="4" fill="#e0e8f0"/><rect x="30" y="190" width="190" height="8" rx="4" fill="#e0e8f0"/><rect x="30" y="210" width="150" height="8" rx="4" fill="#e0e8f0"/></g><g id="right-panel"><text x="270" y="130" font-family="var(--font-heading)" font-weight="600" font-size="16" fill="var(--dark-blue)">图书馆</text><rect x="270" y="150" width="200" height="30" rx="5" fill="#ffffff" stroke="#e0e0e0"/><circle cx="285" cy="165" r="5" fill="var(--primary-color)" opacity="0.3"/><text x="300" y="170" font-family="var(--font-main)" font-size="12" fill="#555">无题收藏</text><rect x="270" y="190" width="200" height="30" rx="5" fill="#ffffff" stroke="#e0e0e0"/><circle cx="285" cy="205" r="5" fill="var(--primary-color)" opacity="0.6"/><text x="300" y="210" font-family="var(--font-main)" font-size="12" fill="#333">专家新手</text><rect x="270" y="230" width="200" height="30" rx="5" fill="var(--primary-color)" stroke="#4A90E2"/><circle cx="285" cy="245" r="5" fill="white" opacity="0.8"/><text x="300" y="250" font-family="var(--font-main)" font-size="12" fill="white">体育运动</text></g></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 3. 探索知识网络 ======================= -->
+        <section class="section light-bg">
+            <div class="container">
+                <div class="showcase-grid">
+                    <div class="illustration-wrapper">
+                        <!-- SVG 插画 2: 网络关系图 -->
+                        <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg"><g id="sidebar"><rect x="10" y="10" width="160" height="330" rx="10" fill="#ffffff"/><text x="25" y="40" font-family="var(--font-heading)" font-size="12" fill="#555">类似</text><rect x="80" y="25" width="80" height="25" rx="12.5" fill="var(--dark-blue)"/><text x="120" y="41" font-family="var(--font-main)" font-size="10" fill="white" text-anchor="middle">种子论文</text><rect x="25" y="60" width="130" height="60" rx="5" fill="var(--light-gray)"/><rect x="35" y="70" width="110" height="6" rx="3" fill="#d8e1e8"/><rect x="35" y="82" width="90" height="6" rx="3" fill="#d8e1e8"/><rect x="25" y="130" width="130" height="60" rx="5" fill="#ffffff" stroke="#e0e8f0"/><rect x="35" y="140" width="110" height="6" rx="3" fill="#d8e1e8"/><rect x="35" y="152" width="100" height="6" rx="3" fill="#d8e1e8"/><rect x="25" y="200" width="130" height="60" rx="5" fill="#ffffff" stroke="#e0e8f0"/><rect x="35" y="210" width="110" height="6" rx="3" fill="#d8e1e8"/><rect x="35" y="222" width="80" height="6" rx="3" fill="#d8e1e8"/></g><g id="network-graph"><line x1="200" y1="320" x2="480" y2="320" stroke="#ccc" stroke-width="1.5"/><path d="M 480 320 L 470 315 L 470 325 Z" fill="#ccc"/><text x="200" y="340" font-family="var(--font-main)" font-size="10" fill="#888">更早的</text><text x="480" y="340" font-family="var(--font-main)" font-size="10" fill="#888" text-anchor="end">最近的</text><line x1="220" y1="200" x2="280" y2="150" stroke="#d0d0d0" stroke-width="1"/><line x1="280" y1="150" x2="330" y2="120" stroke="#d0d0d0" stroke-width="1"/><line x1="330" y1="120" x2="380" y2="170" stroke="#d0d0d0" stroke-width="1"/><line x1="380" y1="170" x2="430" y2="250" stroke="#d0d0d0" stroke-width="1"/><line x1="330" y1="120" x2="350" y2="220" stroke="#d0d0d0" stroke-width="1"/><line x1="350" y1="220" x2="400" y2="280" stroke="#d0d0d0" stroke-width="1"/><circle cx="220" cy="200" r="12" fill="var(--dark-blue)" opacity="0.8"/><circle cx="280" cy="150" r="10" fill="var(--dark-blue)" opacity="0.8"/><circle cx="330" cy="120" r="18" fill="var(--primary-color)" stroke="white" stroke-width="2" class="svg-node-animated" style="animation-delay: 0s;"/><circle cx="380" cy="170" r="14" fill="var(--dark-blue)" opacity="0.8"/><circle cx="430" cy="250" r="16" fill="var(--dark-blue)" opacity="0.8" class="svg-node-animated" style="animation-delay: 0.5s;"/><circle cx="350" cy="220" r="10" fill="var(--dark-blue)" opacity="0.8"/><circle cx="400" cy="280" r="11" fill="var(--dark-blue)" opacity="0.8"/><circle cx="460" y1="150" r="15" fill="var(--dark-blue)" opacity="0.8" class="svg-node-animated" style="animation-delay: 1s;"/></g></svg>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>可视化整个研究领域</h3>
+                        <p>这不仅仅是文献列表，而是动态的知识地图。在这里，你可以直观地看到思想的脉络。</p>
+                        <ul class="feature-list">
+                            <li>发现奠基性论文和研究热点</li>
+                            <li>理解不同学者和论文间的深层联系</li>
+                            <li>沿时间线追溯任何一个理论的演进</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======================= 4. 应用情景区 ======================= -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">赋能每一个科研瞬间</h2>
+                <div class="scenarios-grid">
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🗺️</div>
+                        <h3>撰写文献综述</h3>
+                        <p class="challenge">痛点：进入新领域，面对海量文献，不知从何读起？</p>
+                        <p><strong>解决方案：</strong>从几篇核心论文出发，AI为你绘制出完整的知识地图，让你在数小时内理清领域脉络，定位关键文献。</p>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">📡</div>
+                        <h3>追踪前沿动态</h3>
+                        <p class="challenge">痛点：科研日新月异，如何确保自己不错过任何重要进展？</p>
+                        <p><strong>解决方案：</strong>为你关注的课题设置“兔子雷达”，一旦有相关新论文发表，系统将自动推送给你，让你始终保持领先。</p>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🌳</div>
+                        <h3>追溯理论源头</h3>
+                        <p class="challenge">痛点：想深入理解一个理论或方法，如何找到其“根”？</p>
+                        <p><strong>解决方案：</strong>利用“早期工作”功能层层回溯，像考古一样挖掘理论的起源与演变，构建扎实的知识体系。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= 5. 快速上手指南 ======================= -->
+        <section class="section light-bg">
+            <div class="container">
+                <h2 class="section-title">四步开启探索之旅</h2>
+                <div class="workflow-timeline">
+                    <div class="workflow-step step-1">
+                        <div class="step-icon">🌱</div>
+                        <h4>1. 播下种子</h4>
+                        <p>创建一个新项目，添加几篇你最熟悉、最相关的“种子论文”。</p>
+                    </div>
+                    <div class="workflow-step step-2">
+                        <div class="step-icon">✨</div>
+                        <h4>2. 智能发现</h4>
+                        <p>AI将立即为你推荐“相似工作”，带你发现意想不到的关联文献。</p>
+                    </div>
+                    <div class="workflow-step step-3">
+                        <div class="step-icon">📚</div>
+                        <h4>3. 构建知识库</h4>
+                        <p>将有价值的文献一键添加到你的收藏集，并观察知识网络不断生长。</p>
+                    </div>
+                    <div class="workflow-step step-4">
+                        <div class="step-icon">🚀</div>
+                        <h4>4. 同步与导出</h4>
+                        <p>将整理好的文献库同步到Zotero或导出，为你的论文写作提供弹药。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- ======================= 6. 底部行动号召区 ======================= -->
+    <footer class="footer">
+        <div class="container">
+            <h2>准备好革新你的科研工作流了吗？</h2>
+            <p>加入全球数万名研究者的行列，他们已经通过 ResearchRabbit 改变了工作方式。<br>永久免费，即刻体验。</p>
+            <a href="https://app.researchrabbit.ai/" target="_blank" rel="noopener noreferrer" class="cta-button">访问 ResearchRabbit 官网</a>
+        </div>
+    </footer>
+
+</body>
+</html>
